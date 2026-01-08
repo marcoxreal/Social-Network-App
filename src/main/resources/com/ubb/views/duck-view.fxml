@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="820" prefHeight="520"
+      spacing="14"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ubb.controller.UserController"
+      styleClass="app-root">
+
+    <padding>
+        <Insets top="18" right="18" bottom="18" left="18"/>
+    </padding>
+
+    <!-- TOP BAR -->
+    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
+        <!-- Filter (ascuns) -->
+        <Label fx:id="lblFilter" text="Filter:" styleClass="muted"/>
+        <ComboBox fx:id="comboFilterTip" onAction="#onFilter" prefWidth="150"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label fx:id="loginStatusLabel" text="Not logged in." styleClass="muted"/>
+
+        <Button fx:id="btnSendMessage" text="Message" onAction="#handleSendMessage" styleClass="pill"/>
+        <Button fx:id="btnFriendRequests" text="Requests" onAction="#handleFriendRequests" styleClass="pill"/>
+        <Button fx:id="btnStartRace"
+                text="Start Race"
+                onAction="#onStartRace"
+                styleClass="pill"/>
+
+    </HBox>
+
+    <!-- SEARCH CARD -->
+    <VBox spacing="10" styleClass="card">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Search user" styleClass="title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="btnAdd" text="Create Account" onAction="#onAdd" styleClass="primary"/>
+            <Button fx:id="btnLogin" text="Login" onAction="#handleOpenLogin" styleClass="primary"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="txtSearch"
+                       promptText="Type a username…"
+                       onAction="#onSearchEnter"
+                       HBox.hgrow="ALWAYS"
+                       styleClass="search-field"/>
+
+            <Button fx:id="btnClearSearch"
+                    text="✕"
+                    onAction="#onClearSearch"
+                    styleClass="icon-button"/>
+        </HBox>
+
+        <ListView fx:id="listSearchResults"
+                  visible="false"
+                  managed="false"
+                  prefHeight="180"
+                  styleClass="dropdown"/>
+    </VBox>
+
+    <!-- HIDDEN/LEGACY AREA  -->
+    <VBox spacing="10" styleClass="legacy">
+        <TableView fx:id="tableView" prefHeight="240">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="colUsername" text="Username" prefWidth="140"/>
+                <TableColumn fx:id="colTip" text="Tip" prefWidth="110"/>
+                <TableColumn fx:id="colViteza" text="Viteza" prefWidth="100"/>
+                <TableColumn fx:id="colRezistenta" text="Rezistenta" prefWidth="110"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button fx:id="btnPrev" text="Previous" onAction="#onPrev"/>
+            <Label fx:id="labelPage" text="Page 1 of 1" styleClass="muted"/>
+            <Button fx:id="btnNext" text="Next" onAction="#onNext"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnDelete" text="Delete" onAction="#onDelete" styleClass="danger"/>
+        </HBox>
+    </VBox>
+
+    <!-- FOOTER -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="btnAddFriends" text="Add Friends" onAction="#onAddFriends"/>
+        <Button fx:id="btnRemoveFriends" text="Remove Friends" onAction="#onRemoveFriends"/>
+        <Button fx:id="btnCommunities" text="Show Communities" onAction="#onShowCommunities"/>
+        <Button text="Most Sociable Community" onAction="#onMostSociableCommunity"/>
+    </HBox>
+
+</VBox>

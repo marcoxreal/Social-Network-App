@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ubb.controller.RaceController"
+      spacing="12" prefWidth="520" prefHeight="500"
+      styleClass="profile-card">
+
+    <padding>
+        <Insets top="14" right="14" bottom="14" left="14"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="lblTitle" text="Race" styleClass="profile-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnClose" text="Close" onAction="#onClose"/>
+    </HBox>
+
+    <Label text="Live notifications" styleClass="section-title"/>
+    <ListView fx:id="listNotifications" VBox.vgrow="ALWAYS"/>
+
+    <Separator/>
+
+    <Label fx:id="lblResult" text="" styleClass="muted"/>
+</VBox>

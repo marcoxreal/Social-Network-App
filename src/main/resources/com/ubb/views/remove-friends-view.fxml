@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ubb.controller.RemoveFriendsController">
+
+    <ComboBox fx:id="comboUser1" promptText="User 1"/>
+    <ComboBox fx:id="comboUser2" promptText="User 2"/>
+
+    <Button text="Remove Friendship" onAction="#onRemove"/>
+</VBox>

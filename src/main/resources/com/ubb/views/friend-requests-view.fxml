@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefWidth="400" prefHeight="300"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ubb.controller.FriendRequestsController">
+
+    <children>
+
+        <ListView fx:id="requestsList"
+                  layoutX="20"
+                  layoutY="20"
+                  prefWidth="360"
+                  prefHeight="200"/>
+
+        <Button text="Accept"
+                layoutX="80"
+                layoutY="240"
+                onAction="#handleAccept"/>
+
+        <Button text="Reject"
+                layoutX="220"
+                layoutY="240"
+                onAction="#handleReject"/>
+
+    </children>
+</AnchorPane>

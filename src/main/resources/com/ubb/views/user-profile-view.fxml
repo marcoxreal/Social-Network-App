@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ubb.controller.UserProfileController"
+      spacing="12" prefWidth="420" prefHeight="520"
+      styleClass="profile-card">
+
+    <padding>
+        <Insets top="14" right="14" bottom="14" left="14"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox spacing="12">
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblUsername" text="username" styleClass="profile-title"/>
+            <Label fx:id="lblType" text="type" styleClass="muted"/>
+            <Label fx:id="lblStats" text="stats" styleClass="muted"/>
+        </VBox>
+
+        <VBox spacing="8">
+            <Button fx:id="btnAddFriend" text="Add Friend" onAction="#onAddFriend" styleClass="primary"/>
+            <Button fx:id="btnRemoveFriend" text="Remove Friend" onAction="#onRemoveFriend" styleClass="danger"/>
+            <Button fx:id="btnMessage" text="Message" onAction="#onMessage"/>
+        </VBox>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Friends -->
+    <Label text="Friends" styleClass="section-title"/>
+    <ListView fx:id="listFriends" prefHeight="320"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Close" onAction="#onClose"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblRelationship" text="" styleClass="muted"/>
+    </HBox>
+
+</VBox>

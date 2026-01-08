@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ubb.controller.AddUserController"
+      prefWidth="350" prefHeight="450">
+
+    <Label text="Add User" style="-fx-font-size: 18px;"/>
+
+    <TextField fx:id="fieldId" promptText="ID"/>
+    <TextField fx:id="fieldUsername" promptText="Username"/>
+    <TextField fx:id="fieldEmail" promptText="Email"/>
+    <PasswordField fx:id="fieldPassword" promptText="Password"/>
+
+    <ComboBox fx:id="comboUserType" promptText="User Type"/>
+
+    <!-- DUCK FIELDS -->
+    <ComboBox fx:id="comboTipRata" promptText="Tip Rata"/>
+    <TextField fx:id="fieldViteza" promptText="Viteza"/>
+    <TextField fx:id="fieldRezistenta" promptText="Rezistenta"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Save" onAction="#onSave"/>
+        <Button text="Cancel" onAction="#onCancel"/>
+    </HBox>
+
+</VBox>

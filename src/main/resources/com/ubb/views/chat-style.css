@@ -1,0 +1,22 @@
+.bubble-left {
+    -fx-background-color: #e5e5e5;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.bubble-right {
+    -fx-background-color: #c2ffc2;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 12px;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.list-cell {
+    -fx-padding: 8px;
+    -fx-background-color: transparent;
+}
+
+.list-view {
+    -fx-background-color: white;
+}

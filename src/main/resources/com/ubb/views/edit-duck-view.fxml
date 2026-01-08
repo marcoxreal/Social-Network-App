@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ubb.controller.EditDuckController"
+      prefWidth="350" prefHeight="300">
+
+    <children>
+
+        <Label text="Edit / Add Duck"/>
+
+        <TextField fx:id="fieldId" promptText="ID"/>
+        <TextField fx:id="fieldUsername" promptText="Username"/>
+
+        <ComboBox fx:id="comboTip" promptText="Tip Rata"/>
+        <TextField fx:id="fieldViteza" promptText="Viteza"/>
+        <TextField fx:id="fieldRezistenta" promptText="Rezistenta"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Button text="Save" fx:id="btnSave"/>
+                <Button text="Cancel" fx:id="btnCancel"/>
+            </children>
+        </HBox>
+
+    </children>
+
+</VBox>
