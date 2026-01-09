@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -66,7 +67,17 @@ public class RaceController implements Observer<RaceEventEvent> {
 
     private void showFinalResult(RaceResult result) {
         lblResult.setText(result.getMessage());
+
+        if (result.getRanking() == null || result.getRanking().isEmpty()) return;
+        User winner = result.getRanking().get(0);
+
+        if (messageService != null) {
+            String text = "[RACE_WIN] 🏆 Felicitări, ai câștigat cursa: " + result.getEventName() +
+                    " | Time: " + String.format("%.3f", result.getBestTime()) + "s";
+            messageService.sendSystemMessage(winner, text);
+        }
     }
+
 
     public void shutdown() {
         try {

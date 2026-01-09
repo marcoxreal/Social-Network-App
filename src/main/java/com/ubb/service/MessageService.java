@@ -1,6 +1,7 @@
 package com.ubb.service;
 
 import com.ubb.domain.Message;
+import com.ubb.domain.Person;
 import com.ubb.domain.ReplyMessage;
 import com.ubb.domain.User;
 import com.ubb.event.AbstractObservable;
@@ -35,4 +36,13 @@ public class MessageService extends AbstractObservable<MessageEvent> {
     public List<Message> getConversation(Long user1, Long user2) {
         return messageRepo.getConversation(user1, user2);
     }
+
+    public Message sendSystemMessage(User to, String text) {
+        Person system = new Person(1L, "SYSTEM", "sys@sys.com", "786936522");
+        Message msg = new Message(null, system, to, text, LocalDateTime.now());
+        Message saved = messageRepo.save(msg);
+        notifyObservers(new MessageEvent(saved));
+        return saved;
+    }
+
 }

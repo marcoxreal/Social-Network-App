@@ -1,8 +1,8 @@
 package com.ubb.controller;
 
-import com.ubb.domain.User;
-import com.ubb.domain.FriendRequest;
+import com.ubb.domain.*;
 import com.ubb.event.FriendRequestEvent;
+import com.ubb.event.MessageEvent;
 import com.ubb.event.Observer;
 import com.ubb.repository.FriendRequestRepositoryDB;
 import com.ubb.service.*;
@@ -27,8 +27,6 @@ import javafx.stage.Stage;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.Parent;
 
-import com.ubb.domain.Duck;
-import com.ubb.domain.TipRata;
 import com.ubb.util.paging.Page;
 
 import java.io.IOException;
@@ -95,6 +93,25 @@ public class UserController implements Observer<FriendRequestEvent> {
     public void setFriendRequestService(FriendRequestService service) {
         this.friendRequestService = service;
     }
+
+    private final Observer<MessageEvent> messageObserver = ev -> {
+        if (loggedUser == null) return;
+
+        Message m = ev.getMessage();
+        if (m == null || m.getTo() == null) return;
+
+        if (!m.getTo().getId().equals(loggedUser.getId())) return;
+        String text = m.getMessage();
+        if (text != null && text.startsWith("[RACE_WIN]")) {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Congratulations!");
+                alert.setHeaderText("You won the race!");
+                alert.setContentText(text.replace("[RACE_WIN]", "").trim());
+                alert.showAndWait();
+            });
+        }
+    };
 
 
     @Override
@@ -231,6 +248,7 @@ public class UserController implements Observer<FriendRequestEvent> {
     public void setLoggedUser(User user) {
         this.loggedUser = user;
         friendRequestService.addObserver(this);
+        messageService.addObserver(messageObserver);
         showAlert("Login successful", "Welcome, " + user.getUsername(), Alert.AlertType.INFORMATION);
         btnLogin.setDisable(true);
         loginStatusLabel.setText("Logged in as: " + user.getUsername());
@@ -521,7 +539,7 @@ public class UserController implements Observer<FriendRequestEvent> {
             userService.getAllUsers().stream()
                     .filter(u -> u instanceof Duck)
                     .map(u -> (Duck) u)
-                    .filter(d -> d.getViteza() > 0) // evita infinit / invalid
+                    .filter(d -> d.getViteza() > 0)
                     .forEach(race::addParticipant);
 
             if (race.getParticipants().isEmpty()) {
@@ -730,6 +748,10 @@ public class UserController implements Observer<FriendRequestEvent> {
         if (friendRequestService != null) {
             friendRequestService.removeObserver(this);
         }
+        if (messageService != null) {
+            messageService.removeObserver(messageObserver);
+        }
     }
+
 
 }
